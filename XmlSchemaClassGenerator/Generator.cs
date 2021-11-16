@@ -317,8 +317,13 @@ namespace XmlSchemaClassGenerator
                 var ex = e.Exception as Exception;
                 while (ex != null)
                 {
-                    Log?.Invoke(ex.Message);
-                    ex = ex.InnerException;
+                  if(ex is XmlSchemaException xse && xse.SourceUri != null)
+                  {
+                    Log?.Invoke($"Source URI: {xse.SourceUri}");
+                  }
+
+                  Log?.Invoke(ex.Message);
+                  ex = ex.InnerException;
                 }
             };
 
