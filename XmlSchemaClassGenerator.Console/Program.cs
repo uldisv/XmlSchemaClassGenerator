@@ -55,14 +55,16 @@ namespace XmlSchemaClassGenerator.Console
             var createGeneratedCodeAttributeVersion = true;
             var netCoreSpecificCode = false;
             var generateCommandLineArgs = true;
+            string defaultNamespace = null;
 
-            var options = new OptionSet {
+      var options = new OptionSet {
                 { "h|help", "show this message and exit", v => showHelp = v != null },
                 { "n|namespace=", @"map an XML namespace to a C# namespace
 Separate XML namespace and C# namespace by '='.
 One option must be given for each namespace to be mapped.
 A file name may be given by appending a pipe sign (|) followed by a file name (like schema.xsd) to the XML namespace.
 If no mapping is found for an XML namespace, a name is generated automatically (may fail).", v => namespaces.Add(v) },
+                { "dn|defaultnamespace=", @"Default namespace, if used if no namespace is found.", v => defaultNamespace = v },
                 { "o|output=", "the {FOLDER} to write the resulting .cs files to", v => outputFolder = v },
                 { "i|integer=", @"map xs:integer and derived types to {TYPE} instead of automatic approximation
 {TYPE} can be i[nt], l[ong], or d[ecimal]", v => {
@@ -204,6 +206,7 @@ without backing field initialization for collections
                 CreateGeneratedCodeAttributeVersion = createGeneratedCodeAttributeVersion,
                 NetCoreSpecificCode = netCoreSpecificCode,
                 GenerateCommandLineArgumentsComment = generateCommandLineArgs,
+                DefaultNamespace = defaultNamespace
             };
 
             generator.CommentLanguages.AddRange(commentLanguages);

@@ -1106,7 +1106,7 @@ namespace XmlSchemaClassGenerator
         private string BuildNamespace(Uri source, string xmlNamespace)
         {
             var key = new NamespaceKey(source, xmlNamespace);
-            var result = _configuration.NamespaceProvider.FindNamespace(key);
+            var result = _configuration.NamespaceProvider.FindNamespace(key, _configuration.DefaultNamespace);
             if (!string.IsNullOrEmpty(result))
             {
                 return result;

@@ -172,6 +172,11 @@ namespace XmlSchemaClassGenerator
         public string TextValuePropertyName { get; set; } = "Value";
 
         /// <summary>
+        /// Default namespace if specified
+        /// </summary>
+        public string DefaultNamespace { get; set; }
+
+        /// <summary>
         /// Provides a fast and safe way to write to the Log
         /// </summary>
         /// <param name="messageCreator"></param>

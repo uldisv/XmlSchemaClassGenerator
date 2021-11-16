@@ -300,6 +300,12 @@ namespace XmlSchemaClassGenerator
             set { _configuration.CommandLineArgumentsProvider = value; }
         }
 
+        public string DefaultNamespace
+        {
+            get { return _configuration.DefaultNamespace; }
+            set { _configuration.DefaultNamespace = value; }
+        }
+
         static Generator()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
